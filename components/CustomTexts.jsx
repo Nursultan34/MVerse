@@ -4,12 +4,16 @@ import { motion } from 'framer-motion';
 
 import { textContainer, textVariant2 } from '../utils/motion';
 
-export const TypingText = ({ textStyles }) => (
+export const TypingText = ({ title, textStyles }) => (
   <motion.p
     variants={textContainer}
-    className={`font-normal text-[14px] text-secondary-white font-extrabold ${textStyles}`}
+    className={`font-normal text-[15px] text-secondary-white ${textStyles}`}
   >
-    About Metaverse
+    {Array.from(title).map((letter, index) => (
+      <motion.span variants={textVariant2} key={index}>
+        {letter === ' ' ? '\u00A0' : letter}
+      </motion.span>
+    ))}
   </motion.p>
 );
 
